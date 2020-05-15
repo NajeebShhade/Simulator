@@ -1,2 +1,2 @@
-# Simulator
-my new repo
+# FlightSimulator
+Flight Simulator in JavaFX
