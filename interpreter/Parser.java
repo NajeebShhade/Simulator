@@ -15,7 +15,6 @@ public class Parser {
 
 	private static Parser parserInstance = null;
 	private static HashMap<String, Command> MYMAP = new HashMap<String, Command>();
-
 	private static boolean whileMode = false;
 	private WhileCommand command = new WhileCommand();
 
@@ -29,7 +28,7 @@ public class Parser {
 		}
 		return parserInstance;
 	}
-
+	 // ממוש מאף לבדוק מילים שמורות בקוד שקיבלנו
 	private static void initializeMYMAP() {
 		MYMAP.put("=", new AssignmentCommand());
 		MYMAP.put("return", new ReturnCommand());
@@ -42,7 +41,7 @@ public class Parser {
 
 	}
 
-	public void parse(String[] line) {
+	public void parser(String[] line) {
 		String str = "";
 		List<String> lineList = new ArrayList<>(Arrays.asList(line));
 

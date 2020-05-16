@@ -18,7 +18,7 @@ public class FlightSimulatorInterpreter {
 
 	public int interpret(String[] lines) {
 		for (String line : lines) {
-			parser.parse(lexer.lexer(line));
+			parser.parser(lexer.lexer(line));
 		}
 		return returnValue;
 	}

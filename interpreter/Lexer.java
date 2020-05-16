@@ -17,31 +17,31 @@ public class Lexer {
 	}
 
 	public String[] lexer(String line) {
-		Scanner sc;
-		String str1, str2;
+		Scanner MyScanner;
+		String Index1, Index2;
 		StringBuilder builder = new StringBuilder();
 		String[] tokens = line.split("(?<=([={}])|(bind))|(?=([={}]))");
 
 		for (String token : tokens) {
-			sc = new Scanner(token);
-			str1 = sc.next();
-			builder.append(str1);
+			MyScanner = new Scanner(token);
+			Index1 = MyScanner.next();
+			builder.append(Index1);
 
-			while (sc.hasNext()) {
-				str2 = sc.next();
-				if (isFullExpression(str1, str2))
+			while (MyScanner.hasNext()) {
+				Index2 = MyScanner.next();
+				if (ExpressionCheck(Index1, Index2))
 					builder.append(",");
-				builder.append(str2);
-				str1 = str2;
+				builder.append(Index2);
+				Index1 = Index2;
 			}
 			builder.append(",");
 		}
-		return builder.toString().split(",");
+		return builder.toString().split(","); //הפרדה בין מלים ב ,
 	}
 
-	private boolean isFullExpression(String str1, String str2) {
-		Pattern end = Pattern.compile(".*[\\w)\"]");
-		Pattern start = Pattern.compile("[\\w(\"].*");
-		return (end.matcher(str1).matches() && start.matcher(str2).matches());
+	private boolean ExpressionCheck(String Index1, String Index2) {
+		Pattern start = Pattern.compile("[\\w(\"].*"); //בדיקת מילה שמורה
+		Pattern end = Pattern.compile(".*[\\w)\"]"); // בדיקת מילה שמורה
+		return (end.matcher(Index1).matches() && start.matcher(Index2).matches());
 	}
 }
